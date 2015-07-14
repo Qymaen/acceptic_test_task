@@ -11,4 +11,4 @@ require_once 'model/Lessons.php';
 require_once 'model/Ratings.php';
 
 // get api
-require_once 'api/api.php';
+require_once 'api/Api.php';

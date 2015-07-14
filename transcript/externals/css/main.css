@@ -467,5 +467,7 @@ div.search-form
  background: #80CFFF;
 }
 
-
+.transcript_system_content {
+ padding: 10px 20px;
+}
 

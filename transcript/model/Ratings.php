@@ -6,7 +6,7 @@ class Ratings extends Items
      * DB table name
      * @var string
      */
-    public $_table = 'ratings';
+    public $table = 'ratings';
 
     public function __construct()
     {
@@ -21,7 +21,7 @@ class Ratings extends Items
     public function select(array $params = array())
     {
         // main query
-        $sql = 'SELECT * FROM ' . $this->_table;
+        $sql = 'SELECT * FROM ' . $this->table;
 
         // join users
         $sql .= ' LEFT JOIN users ON users.user_id = ratings.user_id';
@@ -34,6 +34,49 @@ class Ratings extends Items
 
         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
+        // return as array of students and their ratings
+        if (!empty($params['students_ratings'])) {
+            if (!empty($result)) {
+                $resultTmp = array();
+                foreach ($result as $row) {
+                    $resultTmp[$row['user_id']][] = $row;
+                }
+                $result = $resultTmp;
+            }
+        }
+
         return $result;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

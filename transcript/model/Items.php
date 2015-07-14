@@ -29,7 +29,13 @@ class Items
      */
     public function select(array $params = array())
     {
-        $sql = 'SELECT * FROM ' . $this->_table;
+        $sql = 'SELECT * FROM ' . $this->table;
+
+        // get item by id
+        if (!empty($params['id'] and !empty($this->itemType))) {
+            $sql .= ' WHERE ' . $this->itemType . '_id = ' . (int) $params['id'];
+        }
+
         $sth = $this->_db->prepare($sql);
         $sth->execute();
 

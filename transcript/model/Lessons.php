@@ -6,7 +6,13 @@ class Lessons extends Items
      * DB table name
      * @var string
      */
-    public $_table = 'lessons';
+    public $table = 'lessons';
+
+    /**
+     * Item type
+     * @var string
+     */
+    public $itemType = 'lesson';
 
     public function __construct()
     {

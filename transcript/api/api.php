@@ -1,6 +1,6 @@
 <?php
 
-class api
+class Api
 {
     /**
      * Format Date to "Season Year", example Winter 2013

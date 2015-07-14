@@ -6,7 +6,13 @@ class Users extends Items
      * DB table name
      * @var string
      */
-    public $_table = 'users';
+    public $table = 'users';
+
+    /**
+     * Item type
+     * @var string
+     */
+    public $itemType = 'user';
     
     public function __construct()
     {
