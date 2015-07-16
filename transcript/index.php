@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="language" content="en">
     <link rel="stylesheet" type="text/css" href="externals/css/main.css" media="screen, projection">
+    <script src="externals/scripts/core.js"></script>
 	<title>Transcript System</title>
 </head>
 <body>

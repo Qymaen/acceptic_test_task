@@ -471,3 +471,35 @@ div.search-form
  padding: 10px 20px;
 }
 
+.separator {
+ margin: 10px 0px;
+}
+
+.student_name,
+.student_id,
+.student_gpa,
+.student_major {
+    font-weight: bold;
+}
+
+.season_title {
+    text-decoration: underline;
+}
+
+.season_rating {
+    list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

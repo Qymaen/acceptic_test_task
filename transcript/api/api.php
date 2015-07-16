@@ -4,63 +4,86 @@ class Api
 {
     /**
      * Format Date to "Season Year", example Winter 2013
-     * @param string $date
+     * @param array $studentInfo
+     *
+     * @return array $studentInfo Formatted array
      */
-    public static function formatDate($date = null)
+    public static function formatDate(array $studentInfo)
     {
-        echo '<pre>'; print_r('formatDate'); echo '</pre>'; exit;
+        $seasons = array(
+            '01' => 'winter',
+            '02' => 'winter',
+            '03' => 'spring',
+            '04' => 'spring',
+            '05' => 'spring',
+            '06' => 'summer',
+            '07' => 'summer',
+            '08' => 'summer',
+            '09' => 'autumn',
+            '10' => 'autumn',
+            '11' => 'autumn',
+            '12' => 'winter',
+        );
+
+        foreach ($studentInfo as $key => &$rating) {
+
+            $month = date('m', strtotime($rating['date']));
+            $season = $seasons[$month];
+            $rating['date_formated'] = ucfirst($season)
+                . ' '
+                . date('Y', strtotime($rating['date']));
+        }
+        unset($rating);
+
+        return $studentInfo;
     }
 
     /**
-     * Calculate GPA
-     * @param null $gpa
-     * @param array $params
-     * @return float
+     * Get Major Subject
+     * @param array $studentInfo
+     *
+     * @return string $majorSubject
      */
-    public static function calculateGPA($gpa = null, array $params = array())
+    public static function getMajorSubject(array $studentInfo)
     {
-        switch ($gpa) {
-            case 'A+' :
-                $rating = 4.0;
-                break;
-            case 'A' :
-                $rating = 4.0;
-                break;
-            case 'A-' :
-                $rating = 3.7;
-                break;
-            case 'B+' :
-                $rating = 3.3;
-                break;
-            case 'B' :
-                $rating = 3.0;
-                break;
-            case 'B-' :
-                $rating = 2.7;
-                break;
-            case 'C+' :
-                $rating = 2.3;
-                break;
-            case 'C' :
-                $rating = 2.0;
-                break;
-            case 'C-' :
-                $rating = 1.7;
-                break;
-            case 'D+' :
-                $rating = 1.3;
-                break;
-            case 'D' :
-                $rating = 1.0;
-                break;
-            case 'E/F' :
-                $rating = 0.0;
-                break;
-            default :
-                $rating = 0.0;
-                break;
+        $majorRating = 'E/F';
+        $majorSubject = '';
+
+        foreach ($studentInfo as $rating) {
+
+            if (strstr($rating['rating'], '+')) {
+                if (substr($rating['rating'], 0, 1) === substr($majorRating, 0, 1)) {
+                    $majorRating = $rating['rating'];
+                    $majorSubject = $rating['lesson_title'];
+                }
+            } else {
+                if ($rating['rating'] < $majorRating) {
+                    $majorRating = $rating['rating'];
+                    $majorSubject = $rating['lesson_title'];
+                }
+            }
         }
 
-        return $rating;
+        return $majorSubject;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
