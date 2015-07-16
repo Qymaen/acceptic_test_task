@@ -54,3 +54,8 @@ For this transcript system do all of the following. If you are unable to do all 
 (c) Write the HTML code to display the page above
 (d) Write the CSS to display items as formatted above (e.g. bold, underline, white space/indenting, italics, etc)
 (e) Write Javascript code so that after the page finishes loading, the GPA is dynamically calculated from the grades and displayed within the transcript.
+
+
+HOW TO:
+1. you need to create db 'transcript_system' and upload to it transcript_system.sql
+2. that's all
