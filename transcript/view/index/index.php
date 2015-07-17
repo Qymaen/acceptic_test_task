@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="student_major">
-                        Major: <?php echo $majorSubject; ?>
+                        Major: <?php echo $specialization; ?>
                     </div>
 
                     <hr class="separator">

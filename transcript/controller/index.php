@@ -27,13 +27,18 @@ if (!empty($ratingsAll[$studentId])) {
 // format date
 $studentInfo = Api::formatDate($studentInfo);
 
-// get major rating
-$majorSubject = Api::getMajorSubject($studentInfo);
+// get specialization
+$users = new Users();
+$specialization = $users->getSpecialization($studentId);
 
 // get student ratings grouped by season
 $seasonRatings = array();
 foreach ($studentInfo as $value) {
     $seasonRatings[$value['date_formated']][] = $value['lesson_title']
+        . ' '
+        . '<span class="subject_course">'
+        . $value['course']
+        . '</span>'
         . ' '
         . '<span class="subject_rating">'
         . $value['rating']
